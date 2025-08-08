@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王子元 - 青年作曲家</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a1a1a',
+            secondary: '#666666',
+            accent: '#cc9966',
+            light: '#f5f5f5',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Georgia', 'serif'],
+          },
+        },
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .transition-transform {
+        transition-property: transform;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+      }
+
+      .hover-lift {
+        @apply hover:-translate-y-1 transition-all duration-300;
+      }
+
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-light text-primary antialiased">
+  <!-- 导航栏（扩展为5个菜单项：首页、日程、作品、联系方式、照片） -->
+  <header id="navbar" class="fixed w-full z-50 transition-all duration-500">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center bg-primary/80 bg-blur text-white">
+      <a href=" " class="text-2xl font-bold tracking-wider">王子元</a >
+
+      <!-- 桌面端导航（新增“照片”入口） -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="#home" class="hover:text-accent transition-colors">首页</a >
+        <a href="#schedule" class="hover:text-accent transition-colors">日程</a >
+        <a href="#works" class="hover:text-accent transition-colors">作品</a >
+        <a href="#contact" class="hover:text-accent transition-colors">联系方式</a >
+        <a href="#photos" class="hover:text-accent transition-colors">照片</a > <!-- 新增照片入口 -->
+      </div>
+
+      <!-- 移动端菜单按钮 -->
+      <button id="menuBtn" class="md:hidden text-white focus:outline-none">
+        <<i class="fa fa-bars text-xl"></</i> <!-- 修复多余的<符号 -->
+      </button>
+    </nav>
+
+    <!-- 移动端导航菜单（同步新增“照片”入口） -->
+    <div id="mobileMenu" class="hidden md:hidden bg-primary text-white">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <a href="#home" class="hover:text-accent transition-colors py-2">首页</a >
+        <a href="#schedule" class="hover:text-accent transition-colors py-2">日程</a >
+        <a href="#works" class="hover:text-accent transition-colors py-2">作品</a >
+        <a href="#contact" class="hover:text-accent transition-colors py-2">联系方式</a >
+        <a href="#photos" class="hover:text-accent transition-colors py-2">照片</a > <!-- 移动端同步新增 -->
+      </div>
+    </div>
+  </header>
+
+  <!-- 首页Hero区（替换背景图为您的照片） -->
+  <section id="home" class="h-screen relative flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <!-- 
+        请将照片放入项目目录的「images」文件夹，命名为「hero-photo.jpg」
+        或替换为实际路径（支持本地路径或网络URL） 
+      -->
+      <img src="file/IMG_3018.jpg" alt="个人照片背景" class="w-full h-full object-cover opacity-70"
+      >
+      <div class="absolute inset-0 bg-gradient-to-b from-primary/60 to-primary/80"></div>
+    </div>
+
+    <div class="container mx-auto px-4 z-10 text-center">
+      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-white mb-4 leading-tight text-shadow">
+        王子元
+      </h1>
+      <p class="text-[clamp(1rem,3vw,1.5rem)] text-white/90 max-w-3xl mx-auto mb-8 text-shadow">
+        青年作曲家 | 中央音乐学院附中
+      </p >
+      <a href="#works" class="inline-block bg-accent hover:bg-accent/90 text-white font-medium px-8 py-3 rounded-sm transition-all hover-lift">
+        浏览作品
+      </a >
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+      <<i class="fa fa-chevron-down"></</i> <!-- 修复多余的<符号 -->
+    </div>
+  </section>
+
+  <!-- 新增“照片”板块（可放置更多照片） -->
+  <section id="photos" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">照片集</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 示例照片（替换为您的实际照片路径） -->
+        <div class="bg-light rounded shadow p-4">
+          < img 
+            src="images/performance-photo.jpg" 
+            alt="演出照片" 
+            class="w-full h-48 object-cover rounded mb-2"
+          >
+          <p class="text-secondary text-center">演出现场</p >
+        </div>
+        <div class="bg-light rounded shadow p-4">
+          < img 
+            src="images/studio-photo.jpg" 
+            alt="创作照片" 
+            class="w-full h-48 object-cover rounded mb-2"
+          >
+          <p class="text-secondary text-center">创作瞬间</p >
+        </div>
+        <!-- 可继续添加更多照片 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 日程区（原内容保留，已调整符号问题） -->
+  <section id="schedule" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">演出</h2>
+      <!-- 近期演出 -->
+      <div class="mb-12">
+        <h3 class="text-xl font-semibold mb-4 text-accent">近期演出</h3>
+        <div class="space-y-6">
+          <div class="p-6 bg-light rounded shadow">
+            <h4 class="text-lg font-semibold mb-2">《生日颂-为无伴奏合唱而作 / Chanson of birthday for a cappella》</h4>
+            <p class="text-secondary mb-2">时间：2025年9月20日 19:30</p >
+            <p class="text-secondary">地点：中央音乐学院音乐厅</p >
+          </div>
+        </div>
+      </div>
+      <!-- 往期演出 -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-accent">往期演出</h3>
+        <div class="space-y-6">
+          <div class="p-6 bg-light rounded shadow">
+            <h4 class="text-lg font-semibold mb-2">《渊-长笛、竖琴、马林巴与弦乐四重奏/Yuan for flute,percussion,harp and string quartet》</h4>
+            <p class="text-secondary mb-2">时间：2025年6月17日 19:30</p >
+            <p class="text-secondary">地点：中央音乐学院附中音乐厅</p >
+          </div>
+          <div class="p-6 bg-light rounded shadow">
+           <h4 class="text-lg font-semibold mb-2">《涟漪-小提琴与大提琴二重奏/Ripple for violin and violoncello》</h4>
+          <p class="text-secondary mb-2">时间：2024年10月25日 19:00</p >
+          <p class="text-secondary">地点：美国国家歌剧院</p >
+        </div>
+         <div class="p-6 bg-light rounded shadow">
+          <h4 class="text-lg font-semibold mb-2">《对鸟-长笛、琵琶与三把弦乐器/Crying bird-for flute,pipa and string trio》</h4>
+          <p class="text-secondary mb-2">时间：2024年6月17日 19:30</p >
+          <p class="text-secondary">地点：中央音乐学院附中音乐厅</p >
+        </div>
+        <!-- 可继续添加更多往期演出 -->
+      </div>
+    </div>
+  </div>
+</section>
+          <!-- 其他往期演出... -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- 联系方式板块（可按需扩展） -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">联系方式</h2>
+      <p class="text-center text-secondary mb-4">
+        邮箱：id-18201641160@qq.com<br>
+        微信：WangZiYuan429<br>
+    
+      </p >
+    </div>
+  </section>
+
+  <!-- 音频播放器（原内容保留，符号已修复） -->
+  <div id="audioPlayer" class="fixed bottom-0 left-0 w-full bg-primary text-white py-3 px-4 hidden z-50">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+      <div class="flex items-center mb-2 md:mb-0">
+        <h4 id="currentTitle" class="font-medium mr-4">作品名称</h4>
+        <button id="stopBtn" class="text-white hover:text-accent transition-colors">
+          <<i class="fa fa-stop"></</i> <!-- 修复多余的<符号 -->
+        </button>
+      </div>
+      <div class="w-full md:w-1/2">
+        <audio id="audio" controls class="w-full bg-transparent"></audio>
+      </div>
+    </div>
+  </div>
+<!-- 作品展示区（极简专业版） -->
+<section id="works" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- 标题 -->
+    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-center mb-12">代表作品</h2>
+
+    <!-- 筛选按钮（极简样式） -->
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+      <button class="filter-btn px-5 py-2 rounded transition-colors 
+                     bg-primary text-white hover:bg-accent" 
+              data-filter="all">全部作品</button>
+      <button class="filter-btn px-5 py-2 rounded transition-colors 
+                     bg-light text-primary hover:bg-accent hover:text-white" 
+              data-filter="vocal">声乐作品</button>
+      <button class="filter-btn px-5 py-2 rounded transition-colors 
+                     bg-light text-primary hover:bg-accent hover:text-white" 
+              data-filter="chamber">室内乐作品</button>
+    </div>
+
+    <!-- 作品列表（纯文字信息流） -->
+    <div class="space-y-8">
+      <!-- 作品1：《主人》 -->
+      <div class="work-item border-b pb-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+          <!-- 标题+基础信息 -->
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold mb-2">《主人》</h3>
+            <p class="text-gray-600 mb-1">女中音与钢琴 | 2022年 | 时长3分钟</p >
+            <!-- 演出信息 -->
+            <p class="text-sm text-gray-500 mb-4">女中音：陈禹含 | 钢琴：王子元</p >
+          </div>
+          <!-- 音频播放（极简样式） -->
+          <audio controls class="w-full md:w-1/3 mt-4 md:mt-0">
+            <source src="file/主人.wav" type="audio/mpeg">
+            您的浏览器不支持音频播放
+          </audio>
+        </div>
+        <!-- 作品简介（段落+留白） -->
+        <p class="text-gray-700 leading-relaxed mt-4">
+          《主人》是为女中音和钢琴而作的艺术歌曲，作词为海子。通过独特和声设计，展现诗人复杂精神世界，既有温柔也有落寞孤寂...
+        </p >
+      </div>
+
+      <!-- 作品2：《“夜深沉”主题变奏曲》 -->
+      <div class="work-item border-b pb-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold mb-2">《“夜深沉”主题变奏曲》</h3>
+            <p class="text-gray-600 mb-1">钢琴独奏 | 2022年 | 时长11分钟</p >
+          </div>
+          <audio controls class="w-full md:w-1/3 mt-4 md:mt-0">
+            <source src="file/夜深沉主题变奏曲.wav" type="audio/mpeg">
+            您的浏览器不支持音频播放
+          </audio>
+        </div>
+        <p class="text-gray-700 leading-relaxed mt-4">
+          原为京剧曲牌名，14岁作曲家灵活运用旋律，融入京韵特点与传统乐器模仿，探索钢琴表现力，兼具中西文化交融...
+        </p >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* 极简筛选按钮样式（可按需调整） */
+.filter-btn {
+  cursor: pointer;
+  font-weight: 500;
+}
+/* 作品项分隔线+间距优化 */
+.work-item {
+  border-color: #eee;
+}
+</style>
