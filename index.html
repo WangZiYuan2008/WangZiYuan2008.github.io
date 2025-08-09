@@ -53,10 +53,10 @@
     <div id="mobileMenu" class="hidden md:hidden bg-primary text-white">
       <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
         <a href="#home" class="hover:text-accent transition-colors py-2">首页</a >
-        <a href="#schedule" class="hover:text-accent transition-colors py-2">日程</a >
-        <a href="#works" class="hover:text-accent transition-colors py-2">作品</a >
-        <a href="#contact" class="hover:text-accent transition-colors py-2">联系方式</a >
-        <a href="#photos" class="hover:text-accent transition-colors py-2">照片</a > <!-- 移动端同步新增 -->
+        <a href="#schedule" class="hover:text-accent transition-colors py-2">日程/Event</a >
+        <a href="#works" class="hover:text-accent transition-colors py-2">作品/Work</a >
+        <a href="#contact" class="hover:text-accent transition-colors py-2">联系方式/Contact</a >
+        <a href="#photos" class="hover:text-accent transition-colors py-2">照片/Photo</a > <!-- 移动端同步新增 -->
       </div>
     </div>
   </header>
@@ -90,40 +90,47 @@
     </div>
   </section>
 
-  <!-- 新增“照片”板块（可放置更多照片） -->
-  <section id="photos" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">照片集</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- 示例照片（替换为您的实际照片路径） -->
-        <div class="bg-light rounded shadow p-4">
-          < img 
-            src="images/performance-photo.jpg" 
-            alt="演出照片" 
-            class="w-full h-48 object-cover rounded mb-2"
-          >
-          <p class="text-secondary text-center">演出现场</p >
-        </div>
-        <div class="bg-light rounded shadow p-4">
-          < img 
-            src="images/studio-photo.jpg" 
-            alt="创作照片" 
-            class="w-full h-48 object-cover rounded mb-2"
-          >
-          <p class="text-secondary text-center">创作瞬间</p >
-        </div>
-        <!-- 可继续添加更多照片 -->
+  <!-- 照片墙板块 -->
+<section id="photos" class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- 标题 -->
+    <h2 class="text-3xl font-bold text-center mb-8">照片/Photo</h2>
+    
+    <!-- 照片网格：自动适配列数 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <!-- 照片项：替换 src 和 alt 即可 -->
+      <div class="bg-white rounded shadow overflow-hidden">
+        <img src="file/WechatIMG1036.jpg"> 
       </div>
+      <div class="bg-white rounded shadow overflow-hidden">
+
+        <img src="file/IMG_0250.JPG"  <!-- 替换为你的照片路径 -->
+      </div>
+      <div class="bg-white rounded shadow overflow-hidden">
+
+        <img src="file/IMG_3021.HEIC" 
+        >
+      </div>
+      <div class="bg-white rounded shadow overflow-hidden">
+        < img 
+          src="https://via.placeholder.com/300"  <!-- 替换为你的照片路径 -->
+          alt="创作照片" 
+          class="w-full h-48 object-cover transition-transform hover:scale-105"
+        >
+      </div>
+      <!-- 继续添加更多照片项 -->
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- 日程区（原内容保留，已调整符号问题） -->
   <section id="schedule" class="py-20 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">演出</h2>
+      <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">日程/Event</h2>
       <!-- 近期演出 -->
       <div class="mb-12">
-        <h3 class="text-xl font-semibold mb-4 text-accent">近期演出</h3>
+        <h3 class="text-xl font-semibold mb-4 text-accent">近期日程/Upcoming</h3>
         <div class="space-y-6">
           <div class="p-6 bg-light rounded shadow">
             <h4 class="text-lg font-semibold mb-2">《生日颂-为无伴奏合唱而作 / Chanson of birthday for a cappella》</h4>
@@ -134,7 +141,7 @@
       </div>
       <!-- 往期演出 -->
       <div>
-        <h3 class="text-xl font-semibold mb-4 text-accent">往期演出</h3>
+        <h3 class="text-xl font-semibold mb-4 text-accent">往期日程/Past</h3>
         <div class="space-y-6">
           <div class="p-6 bg-light rounded shadow">
             <h4 class="text-lg font-semibold mb-2">《渊-长笛、竖琴、马林巴与弦乐四重奏/Yuan for flute,percussion,harp and string quartet》</h4>
