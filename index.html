@@ -36,11 +36,11 @@
 
       <!-- 桌面端导航（新增“照片”入口） -->
       <div class="hidden md:flex space-x-8 items-center">
-        <a href="#home" class="hover:text-accent transition-colors">首页</a >
-        <a href="#schedule" class="hover:text-accent transition-colors">日程</a >
-        <a href="#works" class="hover:text-accent transition-colors">作品</a >
-        <a href="#contact" class="hover:text-accent transition-colors">联系方式</a >
-        <a href="#photos" class="hover:text-accent transition-colors">照片</a > <!-- 新增照片入口 -->
+        <a href="#home" class="nav-link hover:text-accent transition-colors">首页</a >
+        <a href="#schedule" class="nav-link hover:text-accent transition-colors">日程</a >
+        <a href="#works" class="nav-link hover:text-accent transition-colors">作品</a >
+        <a href="#contact" class="nav-link hover:text-accent transition-colors">联系方式</a >
+        <a href="#photos" class="nav-link hover:text-accent transition-colors">照片</a > <!-- 新增照片入口 -->
       </div>
 
       <!-- 移动端菜单按钮 -->
@@ -52,17 +52,17 @@
     <!-- 移动端导航菜单（同步新增“照片”入口） -->
     <div id="mobileMenu" class="hidden md:hidden bg-primary text-white">
       <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-        <a href="#home" class="hover:text-accent transition-colors py-2">首页</a >
-        <a href="#schedule" class="hover:text-accent transition-colors py-2">日程/Event</a >
-        <a href="#works" class="hover:text-accent transition-colors py-2">作品/Work</a >
-        <a href="#contact" class="hover:text-accent transition-colors py-2">联系方式/Contact</a >
-        <a href="#photos" class="hover:text-accent transition-colors py-2">照片/Photo</a > <!-- 移动端同步新增 -->
+        <a href="#home" class="nav-link hover:text-accent transition-colors py-2">首页</a >
+        <a href="#schedule" class="nav-link hover:text-accent transition-colors py-2">日程/Event</a >
+        <a href="#works" class="nav-link hover:text-accent transition-colors py-2">作品/Work</a >
+        <a href="#contact" class="nav-link hover:text-accent transition-colors py-2">联系方式/Contact</a >
+        <a href="#photos" class="nav-link hover:text-accent transition-colors py-2">照片/Photo</a > <!-- 移动端同步新增 -->
       </div>
     </div>
   </header>
 
   <!-- 首页Hero区（替换背景图为您的照片） -->
-  <section id="home" class="h-screen relative flex items-center justify-center overflow-hidden">
+  <section id="home" class="content-section active h-screen relative flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <!-- 
         请将照片放入项目目录的「images」文件夹，命名为「hero-photo.jpg」
@@ -91,13 +91,13 @@
   </section>
 
   <!-- 照片墙板块 -->
-<section id="photos" class="py-12 bg-white">
+<section id="photos" class="content-section py-12 bg-white">
   <div class="container mx-auto px-4">
     <!-- 标题 -->
     <h2 class="text-3xl font-bold text-center mb-8">照片/Photo</h2>
     
     <!-- 照片网格：自动适配列数 -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div class="grid sm：grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <!-- 照片项：替换 src 和 alt 即可 -->
       <div class="bg-white rounded shadow overflow-hidden">
         <img src="file/WechatIMG1036.jpg"> 
@@ -125,7 +125,7 @@
 
 
   <!-- 日程区（原内容保留，已调整符号问题） -->
-  <section id="schedule" class="py-20 bg-white">
+  <section id="schedule" class="content-section py-20 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">日程/Event</h2>
       <!-- 近期演出 -->
@@ -172,7 +172,7 @@
  
 
   <!-- 联系方式板块（可按需扩展） -->
-  <section id="contact" class="py-16 bg-white">
+  <section id="contact" class="content-section py-16 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-center mb-8">联系方式</h2>
       <p class="text-center text-secondary mb-4">
@@ -198,10 +198,10 @@
     </div>
   </div>
 <!-- 作品展示区（极简专业版） -->
-<section id="works" class="py-20 bg-white">
+<section id="works" class="content-section py-20 bg-white">
   <div class="container mx-auto px-4">
     <!-- 标题 -->
-    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-center mb-12">代表作品</h2>
+    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-center mb-12">作品</h2>
 
     <!-- 筛选按钮（极简样式） -->
     <div class="flex flex-wrap justify-center gap-4 mb-8">
@@ -410,5 +410,14 @@
 /* 作品项分隔线+间距优化 */
 .work-item {
   border-color: #eee;
+
+  /* 内容区域默认隐藏，仅显示激活项 */
+.content-section {
+  display: none;
+  min-height: calc(100vh - 80px);
+  padding-top: 80px;
+}
+.content-section.active {
+  display: block;
 }
 </style>
